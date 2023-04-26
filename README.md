@@ -1,5 +1,8 @@
 ## ЯндексПрактикум. Спринт 12 - "Docker"
 ---
+
+![example workflow](https://github.com/ViktorAllayarov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+
 ## Особенности:
 
 Стандартный учебный проект YaMDb с системой регистрации/авторизации, создание, редактирование и оценка контента.
@@ -63,7 +66,5 @@ DB_HOST=db # название сервиса (контейнера)
 DB_PORT=5432 # порт для подключения к БД
 SECRET_KEY=key
 ```
-
-![example workflow](https://github.com/ViktorAllayarov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 ## ️ Автор - Аллаяров Виктор
