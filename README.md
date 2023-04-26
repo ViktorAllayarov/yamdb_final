@@ -1,7 +1,7 @@
 ## ЯндексПрактикум. Спринт 12 - "Docker"
 ---
 
-![example workflow](https://github.com/ViktorAllayarov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![ЯндексПрактикум. Спринт 12](https://github.com/ViktorAllayarov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 ## Особенности:
 
