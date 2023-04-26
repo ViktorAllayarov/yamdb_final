@@ -1,39 +1,24 @@
-from django.db.models import Avg
 from django.conf import settings
 from django.core.mail import send_mail
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework import (
-    filters,
-    permissions,
-    status,
-    views,
-    viewsets,
-    mixins,
-)
-from rest_framework.pagination import LimitOffsetPagination
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import (filters, mixins, permissions, status, views,
+                            viewsets)
+from rest_framework.decorators import action
+from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+from reviews.models import Category, Genre, Review, Title
+from users.models import User
 
 from .filters import TitleFilter
-from .permissions import (
-    AuthorModeratorOrReadOnly,
-    IsAdmin,
-)
-from .serializers import (
-    AuthSignupSerializer,
-    GetJWTTokenSerializer,
-    TitleSerializer,
-    TitleListSerializer,
-    GenreSerializer,
-    UserViewSerializer,
-    CategorySerializer,
-    ReviewSerializer,
-    CommentSerializer,
-)
-from users.models import User
-from reviews.models import Category, Title, Genre, Review
+from .permissions import AuthorModeratorOrReadOnly, IsAdmin
+from .serializers import (AuthSignupSerializer, CategorySerializer,
+                          CommentSerializer, GenreSerializer,
+                          GetJWTTokenSerializer, ReviewSerializer,
+                          TitleListSerializer, TitleSerializer,
+                          UserViewSerializer)
 
 EMAIL_TITLE = "Приветствуем {}"
 EMAIL_MESSAGE = "Ваш секретный код: {}"
