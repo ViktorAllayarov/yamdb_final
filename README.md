@@ -7,6 +7,29 @@
 
 Стандартный учебный проект YaMDb с системой регистрации/авторизации, создание, редактирование и оценка контента.
 
+Проект доступен по адресу :
+
+✅ Для доступа к API
+http://158.160.31.116/api/v1/
+
+✅ Админка
+http://158.160.31.116/admin/ 
+
+✅ Документация к проекту
+http://158.160.31.116/redoc/
+
+---
+## Стек технологий
+Python 3
+Django 3.2
+DRF (Django REST framework)
+Django ORM
+Docker
+Docker Compose
+Gunicorn
+nginx
+PostgreSQL
+
 ---
 ## API YaMDb
 ✅ Ресурс **/auth**: аутентификация.    
@@ -23,31 +46,44 @@
 
 ✅Ресурс **/comments**: комментарии к отзывам. Комментарий привязан к определённому отзыву.
 
-## Документация проекта:
-```
-http://127.0.0.1/redoc/
-```
-
 ### Запуск проекта в dev-режиме:
 
 - Клонируем репозиторий:
 
-```bash
-git clone git@github.com:ViktorAllayarov/infra_sp2.git .
+```
+git clone git@github.com:ViktorAllayarov/yamdb_final.git .
 ```
 
 - Запускаем docker-compose:
 
 ```
-docker-compose up
+docker-compose up --build
+```
+
+- Затем узнать id контейнера, для этого вводим
+
+```
+docker container ls
+```
+
+- Выбираем интересующий нас контейнер:
+
+```
+docker exec -it <CONTAINER ID> sh
 ```
 
 - Далее выполняем по очереди команды:
 
 ```
-docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py collectstatic --no-input
-docker-compose exec web python manage.py loaddata
+python manage.py migrate
+python manage.py collectstatic --no-input
+python manage.py createsuperuser
+```
+
+- Далее загружаем фикстуры при необходимости
+
+```
+python manage.py loaddata fixtures.json
 ```
 
 ## ⤵️ Примеры запросов:
@@ -56,6 +92,10 @@ docker-compose exec web python manage.py loaddata
  - /api/v1/titles/ - получение списка всех произведений
  - /api/v1/titles/{titles_id}/ - получение информации о произведении
 
+ ## Документация проекта:
+```
+http://127.0.0.1/redoc/
+```
 ## ⤵️ Пример env-файла:
 ```
 DB_ENGINE=django.db.backends.postgresql # указываем, что работаем с postgresql
