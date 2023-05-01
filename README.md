@@ -57,7 +57,7 @@ git clone git@github.com:ViktorAllayarov/yamdb_final.git .
 - Запускаем docker-compose:
 
 ```
-docker-compose up --build
+docker-compose up -d
 ```
 
 - Затем узнать id контейнера, для этого вводим
