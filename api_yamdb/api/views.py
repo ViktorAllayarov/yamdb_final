@@ -73,8 +73,8 @@ class GenreViewSet(MyMixinsSet):
 
 class TitleViewSet(viewsets.ModelViewSet):
     queryset = Title.objects.annotate(rating=Avg("reviews__score"))
-    serializer_class = TitleSerializer
-    permission_classes = (permissions.AllowAny(),)
+    # serializer_class = TitleSerializer
+    permission_classes = (IsAdmin,)
     pagination_class = LimitOffsetPagination
     filter_backends = (DjangoFilterBackend,)
     filterset_class = TitleFilter
