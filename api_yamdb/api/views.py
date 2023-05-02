@@ -3,8 +3,14 @@ from django.core.mail import send_mail
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import (filters, mixins, permissions, status, views,
-                            viewsets)
+from rest_framework import (
+    filters,
+    mixins,
+    permissions,
+    status,
+    views,
+    viewsets,
+)
 from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
@@ -14,11 +20,17 @@ from users.models import User
 
 from .filters import TitleFilter
 from .permissions import AuthorModeratorOrReadOnly, IsAdmin
-from .serializers import (AuthSignupSerializer, CategorySerializer,
-                          CommentSerializer, GenreSerializer,
-                          GetJWTTokenSerializer, ReviewSerializer,
-                          TitleListSerializer, TitleSerializer,
-                          UserViewSerializer)
+from .serializers import (
+    AuthSignupSerializer,
+    CategorySerializer,
+    CommentSerializer,
+    GenreSerializer,
+    GetJWTTokenSerializer,
+    ReviewSerializer,
+    TitleListSerializer,
+    TitleSerializer,
+    UserViewSerializer,
+)
 
 EMAIL_TITLE = "Приветствуем {}"
 EMAIL_MESSAGE = "Ваш секретный код: {}"
@@ -62,7 +74,7 @@ class GenreViewSet(MyMixinsSet):
 class TitleViewSet(viewsets.ModelViewSet):
     queryset = Title.objects.annotate(rating=Avg("reviews__score"))
     serializer_class = TitleSerializer
-    permission_classes = (IsAdmin,)
+    permission_classes = (permissions.AllowAny(),)
     pagination_class = LimitOffsetPagination
     filter_backends = (DjangoFilterBackend,)
     filterset_class = TitleFilter
